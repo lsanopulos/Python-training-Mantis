@@ -6,21 +6,21 @@ class ProjectHelper:
     def __init__(self, app):
         self.app = app
 
-    def create_project(self, project):
+    def create_project(self, name, desc):
         wd = self.app.wd
         self.open_projects_page()
         wd.find_element_by_css_selector('input[value="Create New Project"]').click()
-        self.fill_project_form(project)
+        self.fill_project_form(name, desc)
         wd.find_element_by_css_selector("input.button").click()
         '''if wd.find_element_by_css_selector("td.form-title").text == 'APPLICATION ERROR #701':
             self.open_projects_page()
             wd.find_element_by_css_selector('input[value="Create New Project"]').click()
             self.fill_new_project_form(project)'''
 
-    def fill_project_form(self, project):
+    def fill_project_form(self, name, desc):
         wd = self.app.wd
-        self.change_field_value("name", project.name)
-        self.change_field_value("description", project.description)
+        self.change_field_value("name", name)
+        self.change_field_value("description", desc)
 
     def fill_new_project_form(self, project):
         wd = self.app.wd
